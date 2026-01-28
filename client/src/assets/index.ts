@@ -1,10 +1,9 @@
 import logo from "./logo.webp";
 import discountImgOne from "./discountImgOne.png";
 import discountImgTwo from "./discountImgTwo.webp";
-// import homeIcon from "./footerIcons/homeIcon.webp";
-// import saveIcon from "./footerIcons/saveIcon.webp";
-import tagIcon from "./footerIcons/tagIcon.webp";
-import smileIcon from "./footerIcons/smileIcon.webp";
+//  import saveIcon from "./footerIcons/saveIcon.webp";
+// import tagIcon from "./footerIcons/tagIcon.webp";
+// import smileIcon from "./footerIcons/smileIcon.webp";
 import payment from "./payment.webp";
 import brandOne from "./brands/brandOne.webp";
 import brandTwo from "./brands/brandTwo.webp";
@@ -20,9 +19,9 @@ export {
   discountImgOne,
   discountImgTwo,
   
-//    saveIcon,
-//   tagIcon,
-//   smileIcon,
+  //  saveIcon,
+  // tagIcon,
+  //  smileIcon,
   payment,
   brandOne,
   brandTwo,

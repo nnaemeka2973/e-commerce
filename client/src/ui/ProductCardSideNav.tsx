@@ -16,6 +16,7 @@ const ProductCardSideNav = ({ product }: { product?: ProductProps }) => {
     const availableItem = favoriteProduct.find(
       (item) => item?._id === product?._id
     );
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setExistingProduct(availableItem || null);
   }, [product, favoriteProduct]);
 

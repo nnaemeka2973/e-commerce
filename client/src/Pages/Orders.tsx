@@ -22,7 +22,12 @@ const Orders = () => {
     const getData = async () => {
       setLoading(true);
       try {
-        const docRef = doc(db, "orders", currentUser?.email!);
+        if (!currentUser?.email) {
+          console.log("No user email found");
+          setLoading(false);
+          return;
+        }
+        const docRef = doc(db, "orders", currentUser.email);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const orderData = docSnap?.data()?.orders;
@@ -37,7 +42,7 @@ const Orders = () => {
       }
     };
     getData();
-  }, []);
+  }, [currentUser?.email]);
   return (
     <Container>
       {loading ? (
@@ -55,7 +60,7 @@ const Orders = () => {
             Total Orders{" "}
             <span className="text-black font-semibold">{orders?.length}</span>
           </p>
-          <p className="text-sm max-w-[600px] tracking-wide text-gray-500">
+          <p className="text-sm max-w-150 tracking-wide text-gray-500">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
             porro, nemo quisquam explicabo, mollitia inventore nobis id maiores
             odio incidunt quidem rerum delectus quaerat similique voluptates

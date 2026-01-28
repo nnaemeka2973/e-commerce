@@ -1,15 +1,12 @@
-import { loadStripe } from "@stripe/stripe-js";
+
 import type { ProductProps } from "../../type";
 import { store } from "../lib/store";
 import { config } from "../../config";
 
 const CheckoutBtn = ({ products }: { products: ProductProps[] }) => {
   const { currentUser } = store();
-  const publishableKey = "";
-  const stripePromise = loadStripe(publishableKey);
 
   const handleCheckout = async () => {
-    const stripe = await stripePromise;
     const response = await fetch(`${config?.baseUrl}/checkout`, {
       method: "POST",
       headers: {
@@ -21,11 +18,8 @@ const CheckoutBtn = ({ products }: { products: ProductProps[] }) => {
       }),
     });
     const checkoutSession = await response?.json();
-    const result: any = await stripe?.redirectToCheckout({
-      sessionId: checkoutSession.id,
-    });
-    if (result.error) {
-      window.alert(result?.error?.message);
+    if (checkoutSession.url) {
+      window.location.href = checkoutSession.url;
     }
   };
   return (

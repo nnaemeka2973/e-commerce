@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import type { ProductProps } from '../../type';
 import { MdOutlineStarOutline } from 'react-icons/md';
 import AddToCartBtn from './AddToCartBtn';
@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 interface Props {
   item: ProductProps;
-  setSearchText?: any;
+  setSearchText?: (value: string) => void;
 }
 
 const ProductCard = ({ item, setSearchText }: Props) => {
@@ -28,11 +28,13 @@ const open = () => {
 
     const handleProduct = () => {
     navigation(`/product/${item?._id}`);
+     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
      setSearchText && setSearchText("");
   };
 
   return (
-    <div className="border border-gray-200 rounded-lg p-1 overflow-hidden
+    <div className="border border-gray-200 rounded-lg p-1 
+    overflow-hidden
      hover:border-black duration-200 cursor-pointer">
         <div className="w-full h-60 relative p-2 group">
             <span onClick={open}
@@ -111,7 +113,12 @@ const open = () => {
                   </p>
                   <div className="mt-4">
                     <Button
-                      className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
+                      className="inline-flex items-center gap-2
+                       rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 
+                       font-semibold text-white shadow-inner 
+                       shadow-white/10 focus:outline-none
+                        data-hover:bg-gray-600 data-open:bg-gray-700 
+                        data-focus:outline-1 data-focus:outline-white"
                       onClick={close}
                     >
                       Got it, thanks!

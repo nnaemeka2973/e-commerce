@@ -21,7 +21,7 @@ interface StoreType {
   // user
   currentUser: UserType | null;
   isLoading: boolean;
-  getUserInfo: (uid: any) => Promise<void>;
+  getUserInfo: (uid: unknown) => Promise<void>;
   // cart
   cartProduct: CartProduct[];
   addToCart: (product: ProductProps) => Promise<void>;
@@ -40,7 +40,7 @@ const customStorage = {
     const item = localStorage.getItem(name);
     return item ? JSON.parse(item) : null;
   },
-  setItem: (name: string, value: any) => {
+  setItem: (name: string, value: unknown) => {
     localStorage.setItem(name, JSON.stringify(value));
   },
   removeItem: (name: string) => {
@@ -55,10 +55,13 @@ export const store = create<StoreType>()(
       cartProduct: [],
       favoriteProduct: [],
 
-      getUserInfo: async (uid: any) => {
-        if (!uid) return set({ currentUser: null, isLoading: false });
+      getUserInfo: async (uid: unknown) => {
+        if (!uid) {
+          set({ currentUser: null, isLoading: false });
+          return;
+        }
 
-        const docRef = doc(db, "users", uid);
+        const docRef = doc(db, "users", String(uid));
         const docSnap = await getDoc(docRef);
 
         try {

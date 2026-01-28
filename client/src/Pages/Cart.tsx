@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import { FaQuestionCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { store } from "../lib/store";
@@ -8,14 +8,13 @@ import Container from "../ui/Container";
 import FormattedPrice from "../ui/FormattedPrice";
 
 const Cart = () => {
-  const [totalAmt, setTotalAmt] = useState({ regular: 0, discounted: 0 });
-  const { cartProduct, currentUser } = store();
+  const { cartProduct } = store();
 
   const shippingAmt = 25;
   const taxAmt = 15;
 
-  useEffect(() => {
-    const totals = cartProduct.reduce(
+  const totalAmt = useMemo(() => {
+    return cartProduct.reduce(
       (sum, product) => {
         sum.regular += product?.regularPrice * product?.quantity;
         sum.discounted += product?.discountedPrice * product?.quantity;
@@ -23,7 +22,6 @@ const Cart = () => {
       },
       { regular: 0, discounted: 0 }
     );
-    setTotalAmt(totals);
   }, [cartProduct]);
   return (
     <Container>
@@ -37,7 +35,8 @@ const Cart = () => {
           <div className="mt-10 lg:grid lg:grid-cols-12 
           lg:items-start lg:gap-x-12 xl:gap-x-16">
             <section className="lg:col-span-7">
-              <div className=" divide-y divide-gray-200 border-b border-t border-gray-200">
+              <div className=" divide-y divide-gray-200 
+              border-b border-t border-gray-200">
                 {cartProduct.map((product) => (
                   <CartProduct product={product} key={product?._id} />
                 ))}

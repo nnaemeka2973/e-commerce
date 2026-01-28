@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { useEffect, useState } from "react"
 import { config } from "../../config";
 import { getData } from "../lib";
@@ -13,7 +13,10 @@ const CustomRightArrow = ({ onClick }: { onClick?: () => void }) => {
   return (
     <button
       onClick={onClick}
-      className="absolute right-0 top-5 m-auto h-10 w-10 flex items-center justify-center bg-gray-100 rounded-full border-[1px] border-gray-200 hover:bg-gray-950 hover:text-white duration-200"
+      className="absolute right-0 top-5 m-auto h-10 w-10 flex
+       items-center justify-center bg-gray-100 rounded-full border
+        border-gray-200 hover:bg-gray-950 hover:text-white
+         duration-200"
       aria-label="Next"
     >
       <HiArrowRight className="text-base" />
@@ -26,7 +29,8 @@ const CustomLeftArrow = ({ onClick }: { onClick?: () => void }) => {
   return (
     <button
       onClick={onClick}
-      className="absolute left-0 top-5 m-auto h-10 w-10 flex items-center justify-center bg-gray-100 rounded-full border-[1px] border-gray-200 hover:bg-gray-950 hover:text-white duration-200"
+      className="absolute left-0 top-5 m-auto h-10 w-10 flex 
+      items-center justify-center bg-gray-100 rounded-full border border-gray-200 hover:bg-gray-950 hover:text-white duration-200"
       aria-label="Next"
     >
       <HiArrowLeft className="text-base" />
@@ -81,7 +85,8 @@ const [categories, setCategories] = useState([]);
         <Link
           key={item?._id}
           to={`category/${item?._base}`}
-          className="flex items-center gap-x-2 p-1 border border-gray-100
+          className="flex items-center gap-x-2 p-1 border
+           border-gray-100
            mr-1 flex-1 rounded-md hover:border-sky-500 hover:shadow-lg"
         >
           <img

@@ -1,38 +1,42 @@
 import { useState } from "react";
 import Label from "./Label";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword  } from "firebase/auth";
 import { auth } from "../lib/firebase";
 import Loading from "./Loading";
 
-const Login = ({ setLogin }: { setLogin: unknown }) => {
+const Login = ({ setLogin }: { setLogin: (value: boolean) => void }) => {
   const [loading, setLoading] = useState(false);
   const [errMsg, setErrMsg] = useState("");
-  const handleLogin = async (e: unknown) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       setLoading(true);
-      const formData = new FormData(e.target);
-      const { email, password }: unknown = Object.fromEntries(formData);
+      const formData = new FormData(e.currentTarget);
+      const { email, password } = Object.fromEntries(formData) as { email: string; password: string };
 
       await signInWithEmailAndPassword(auth, email, password);
-    } catch (error: any) {
+    } catch (error: unknown) {
       let errorMessage;
-      switch (error.code) {
-        case "auth/user-not-found":
-          errorMessage = "No user found with this email.";
-          break;
-        case "auth/wrong-password":
-          errorMessage = "Incorrect password.";
-          break;
-        case "auth/invalid-email":
-          errorMessage = "Invalid email address.";
-          break;
-        case "auth/invalid-credential":
-          errorMessage = "Email or Password not matched";
-          break;
-        // Add more cases as needed
-        default:
-          errorMessage = "An error occurred. Please try again.";
+      if (typeof error === "object" && error !== null && "code" in error) {
+        switch ((error as { code: string }).code) {
+          case "auth/user-not-found":
+            errorMessage = "No user found with this email.";
+            break;
+          case "auth/wrong-password":
+            errorMessage = "Incorrect password.";
+            break;
+          case "auth/invalid-email":
+            errorMessage = "Invalid email address.";
+            break;
+          case "auth/invalid-credential":
+            errorMessage = "Email or Password not matched";
+            break;
+          // Add more cases as needed
+          default:
+            errorMessage = "An error occurred. Please try again.";
+        }
+      } else {
+        errorMessage = "An unknown error occurred.";
       }
       console.log("Error", error);
       setErrMsg(errorMessage);
@@ -91,7 +95,8 @@ const Login = ({ setLogin }: { setLogin: unknown }) => {
         Does not have an Account{" "}
         <button
           onClick={() => setLogin(false)}
-          className="text-gray-200 font-semibold underline underline-offset-2 decoration-[1px] hover:text-white duration-200"
+          className="text-gray-200 font-semibold underline
+           underline-offset-2 decoration-1 hover:text-white duration-200"
         >
           Register
         </button>

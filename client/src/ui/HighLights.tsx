@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Container from "./Container";
 import { getData } from "../lib";
 import { config } from "../../config";
@@ -21,7 +21,8 @@ const Highlights  = () => {
     fetchData();
   }, []);
   return (
-    <Container className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <Container className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
+    gap-8">
       {highlightsData.map((item: HighlightsType) => (
         <div
           key={item?._id}
@@ -30,7 +31,8 @@ const Highlights  = () => {
         >
           <div
             className="absolute inset-0 bg-cover bg-center 
-            rounded-lg transition-transform duration-300 group-hover:scale-110"
+            rounded-lg transition-transform duration-300 
+            group-hover:scale-110"
             style={{
               backgroundImage: `url(${item?.image})`,
               color: item?.color,
