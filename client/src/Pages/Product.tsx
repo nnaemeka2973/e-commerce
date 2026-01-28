@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { config } from "../../config";
 import type { ProductProps } from "../../type";
@@ -121,8 +121,8 @@ const Product = () => {
                   <span className="text-base font-semibold text-green-500">
                     <FormattedPrice
                       amount={
-                        productData?.regularPrice! -
-                        productData?.discountedPrice!
+                        productData?.regularPrice -
+                        productData?.discountedPrice
                       }
                     />
                   </span>{" "}

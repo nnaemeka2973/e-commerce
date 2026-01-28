@@ -21,11 +21,14 @@ const CartProduct = ({ product }: { product: ProductProps }) => {
         <img
           src={product?.images[0]}
           alt="productImage"
-          className="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48 border border-skyText/30 hover:border-skyText duration-300"
+          className="h-24 w-24 rounded-md object-cover 
+          object-center sm:h-48 sm:w-48 border border-sky-500/30
+           hover:border-sky-500 duration-300"
         />
       </Link>
       <div className="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
-        <div className="relative pr-9 sm:grid sm:grid-cols-4 sm:gap-x-6 sm:pr-0">
+        <div className="relative pr-9 sm:grid sm:grid-cols-4 
+        sm:gap-x-6 sm:pr-0">
           <div className="flex flex-col gap-1 col-span-3">
             <h3 className="text-base font-semibold w-full">
               {product?.name.substring(0, 80)}
@@ -49,7 +52,8 @@ const CartProduct = ({ product }: { product: ProductProps }) => {
             <div className="absolute right-0 top-0">
               <button
                 onClick={handleRemoveProduct}
-                className="-m2 inline-flex p-2 text-gray-600 hover:text-red-600"
+                className="-m2 inline-flex p-2 text-gray-600
+                 hover:text-red-600"
               >
                 <IoClose className="text-xl" />
               </button>

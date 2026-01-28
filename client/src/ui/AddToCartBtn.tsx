@@ -28,6 +28,7 @@ const AddToCartBtn = ({
       (item) => item?._id === product?._id
     );
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setExistingProduct(availableItem || null);
   }, [product, cartProduct]);
 
@@ -50,8 +51,7 @@ const AddToCartBtn = ({
       } else {
         toast.error("You can not decrease less than 1");
       }
-    } else {
-    }
+    } else { /* empty */ }
   };
 
   const newClassName = twMerge(
@@ -93,7 +93,7 @@ const AddToCartBtn = ({
         <div className="flex self-center items-center justify-center gap-2">
           <button
             onClick={handleDeleteProduct}
-            className="bg-[#f7f7f7] text-black p-2 border-[1px] border-gray-200 hover:border-skyText rounded-full text-sm hover:bg-white duration-200 cursor-pointer"
+            className="bg-[#f7f7f7] text-black p-2 border border-gray-200 hover:border-sky-500 rounded-full text-sm hover:bg-white duration-200 cursor-pointer"
           >
             <FaMinus />
           </button>
@@ -102,7 +102,7 @@ const AddToCartBtn = ({
           </p>
           <button
             onClick={handleAddToCart}
-            className="bg-[#f7f7f7] text-black p-2 border-[1px] border-gray-200 hover:border-skyText rounded-full text-sm hover:bg-white duration-200 cursor-pointer"
+            className="bg-[#f7f7f7] text-black p-2 border border-gray-200 hover:border-sky-500 rounded-full text-sm hover:bg-white duration-200 cursor-pointer"
           >
             <FaPlus />
           </button>

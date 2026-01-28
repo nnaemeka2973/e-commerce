@@ -74,6 +74,7 @@ const isActive = (path: string) => location.pathname === path;
     const filtered = products.filter((item: ProductProps) =>
       item.name.toLowerCase().includes(searchText.toLowerCase())
     );
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setFilteredProducts(filtered);
   }, [products, searchText]);
 
@@ -102,10 +103,13 @@ const isActive = (path: string) => location.pathname === path;
           {searchText ? (
             <IoClose
               onClick={() => setSearchText("")}
-              className="absolute top-2.5 right-4 text-xl text-gray-500 hover:text-red-500 cursor-pointer transition-colors duration-200"
+              className="absolute top-2.5 right-4 text-xl
+               text-gray-500 hover:text-red-500 cursor-pointer 
+               transition-colors duration-200"
             />
           ) : (
-            <IoSearchOutline className="absolute top-2.5 right-4 text-xl text-gray-400" />
+            <IoSearchOutline className="absolute top-2.5 right-4
+             text-xl text-gray-400" />
           )}
         </div>
 
