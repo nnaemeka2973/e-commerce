@@ -1,0 +1,35 @@
+@import "tailwindcss";
+    /* @plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/aspect-ratio";  
+
+@theme {
+  --color-white-text: #ffffff;
+  --color-red-text: #E02B2B;
+  --color-sky-text: #32BDE8;
+  --color-dark-text: #000000;
+  --color-ligt-text: #9b9b9b;
+  --color-green-text: #1d8221;
+
+} 
+@utility flex-full {
+  flex: 0 0 100%;
+} 
+  */ 
+@layer utilities {
+  .flex-full {
+    flex: 0 0 100%;
+  }
+}
+
+.scrollbar-hide::-webkit-scrollbar{
+  display: none;
+}
+
+/* hide scrollbars on all browsers */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;      /* Firefox */
+}
