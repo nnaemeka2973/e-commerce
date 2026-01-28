@@ -9,7 +9,7 @@ const checkConfig = (server: string): Config  => {
   switch (server) {
     case "production":
       config = {
-        baseUrl: "",
+        baseUrl: "https://e-commerce-5us9.vercel.app",
       };
       break;
     case "local":
