@@ -33,10 +33,24 @@ const open = () => {
   };
 
   return (
-    <div className="border border-gray-200 rounded-lg p-1 
-    overflow-hidden
-     hover:border-black duration-200 cursor-pointer">
-        <div className="w-full h-60 relative p-2 group">
+    <div className=" relative border
+    border-gray-200
+    rounded-xl
+    p-3
+    sm:p-4
+    flex
+    flex-col
+    hover:border-black
+    duration-200
+    cursor-pointer overflow-hidden">
+        <div className="  w-full
+    relative
+    p-2
+    group
+    aspect-4/5
+    md:aspect-3/4
+    lg:h-60
+    shrink-0">
             <span onClick={open}
             className="bg-black text-sky-300 absolute left-0 right-0 w-16 
             text-xs text-center py-1 rounded-md 
@@ -51,16 +65,22 @@ const open = () => {
          onClick={handleProduct}
          src={item?.images[0]}
           alt="productImage"
-          className="w-full h-full rounded-md object-cover 
-          group-hover:scale-110 duration-300"
+          className=" w-full
+    h-full
+    rounded-md
+    object-contain
+    transition-transform
+    duration-300
+    group-hover:scale-105"
         />
 
          <ProductCardSideNav product={item} /> 
 
 
       </div>
-        <div className="flex flex-col gap-2 px-2 pb-2">
-        <h3 className="text-xs uppercase font-semibold text-gray-500">
+        <div className="flex flex-col gap-2 px-2 pb-3 flex-1 min-w-0">
+        <h3 className="text-xs uppercase font-semibold
+         text-gray-500">
           {item?.overView}
         </h3>
         <h2 className="text-lg font-bold line-clamp-2">{item?.name}</h2>
@@ -100,9 +120,9 @@ const open = () => {
                   </DialogTitle>
                   <p className="mt-2 text-sm/6 text-white/50">
                     You are going to save{" "}
-                    <span className="text-skyText">
+                    <span className="text-red-500">
                        <FormattedPrice
-                        amount={item?.regularPrice - item?.discountedPrice}
+             amount={item?.regularPrice - item?.discountedPrice}
                       />{" "} 
                     </span>
                     from this product.

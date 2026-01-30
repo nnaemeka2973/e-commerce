@@ -13,7 +13,7 @@ interface ItemsProps {
 
 const Items = ({ currentItems }: ItemsProps) => {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
       {currentItems &&
         currentItems?.map((item: ProductProps) => (
           <ProductCard key={item?._id} item={item} />
@@ -64,7 +64,8 @@ const [products, setProducts] = useState([]);
     
     <>
     <Items currentItems={currentItems} />
-    <div className="flex flex-col md:flex-row justify-center md:justify-between items-center">
+    <div className="flex flex-col md:flex-row justify-center 
+    md:justify-between items-center">
         <ReactPaginate
           nextLabel=""
           onPageChange={handlePageClick}

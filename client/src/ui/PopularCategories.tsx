@@ -42,7 +42,8 @@ const [categories, setCategories] = useState([]);
           <Title text="Popular categories" />
           <Link
             to={"/category/tvAndAudio"}
-            className="font-medium relative group overflow-hidden"
+            className="font-medium relative 
+            group overflow-hidden"
           >
             View All Categories{" "}
             <span className="absolute bottom-0 left-0 w-full block h-px
@@ -52,19 +53,41 @@ const [categories, setCategories] = useState([]);
         </div>
         <div className="w-full h-px bg-gray-200 mt-3" />
       </div>
-      <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-6">
+      <div className="grid
+    grid-cols-2
+    sm:grid-cols-2
+    md:grid-cols-2
+    lg:grid-cols-6
+    gap-4
+    sm:gap-5
+    md:gap-6">
         {categories.map((item: CategoryProps) => (
           <Link
             to={`/category/${item?._base}`}
             key={item?._id}
-            className=" bg-white rounded-xl shadow hover:shadow-lg
-            p-4 flex flex-col items-center gap-3 transition    "
+            className="bg-white
+  rounded-xl
+  shadow
+  hover:shadow-lg
+  p-3
+  sm:p-4
+  md:p-5
+  flex
+  flex-col
+  items-center
+  gap-2
+  sm:gap-3
+  transition    "
           >
             <img
               src={item?.image}
               alt={item?.name}
-              className="w-full h-32 object-contain  
-              group-hover:scale-110 duration-300"
+              className="w-full
+    h-24
+    sm:h-28
+    md:h-32
+    object-contain
+    duration-300"
             />
             <div className="text-sm md:text-base font-semibold text-center">
               <p className="text-sm md:text-base font-bold">{item?.name}</p>

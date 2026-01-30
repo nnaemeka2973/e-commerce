@@ -116,7 +116,7 @@ const isActive = (path: string) => location.pathname === path;
         {/* Menubar Icons */}
         <div className="flex items-center gap-x-6 text-2xl">
           <Link to={"/profile"}>
-            {currentUser ? (
+            {currentUser && currentUser.avatar ? (
               <img
                 src={currentUser?.avatar}
                 alt="profileImg"
